@@ -1,0 +1,31 @@
+mkdir uppercase_cli && cd uppercase_cli && \
+go mod init uppercase_cli && \
+cat <<EOF > main.go && \
+package main
+
+import (
+    "bufio"
+    "fmt"
+    "os"
+    "strings"
+)
+
+func main() {
+    // Создаем новый сканер для стандартного ввода
+    scanner := bufio.NewScanner(os.Stdin)
+
+    fmt.Print("Введите строку: ")
+
+    // Считываем введенную строку
+    scanner.Scan()
+    input := scanner.Text()
+
+    // Преобразуем строку в верхний регистр
+    upper := strings.ToUpper(input)
+
+    // Выводим строку в верхнем регистре
+    fmt.Printf("Строка в верхнем регистре: %s\n", upper)
+}
+EOF
+
+go run main.go
